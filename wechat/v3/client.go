@@ -7,7 +7,7 @@ import (
 
 	"github.com/go-pay/crypto/xpem"
 	"github.com/go-pay/gopay"
-	"github.com/go-pay/xhttp"
+	"github.com/go-pay/gopay/pkg/xhttp"
 )
 
 // ClientV3 微信支付 V3
@@ -84,4 +84,9 @@ func (c *ClientV3) SetBodySize(sizeMB int) {
 	if sizeMB > 0 {
 		c.hc.SetBodySize(sizeMB)
 	}
+}
+
+// SetHttpClient 设置自定义的xhttp.Client
+func (c *ClientV3) SetHttpClient(client *xhttp.Client) {
+	c.hc = client
 }

@@ -11,7 +11,7 @@ import (
 	"github.com/go-pay/crypto/xpem"
 	"github.com/go-pay/crypto/xrsa"
 	"github.com/go-pay/gopay"
-	"github.com/go-pay/xhttp"
+	"github.com/go-pay/gopay/pkg/xhttp"
 	"github.com/go-pay/xlog"
 	"github.com/go-pay/xtime"
 )
@@ -248,4 +248,9 @@ func (a *Client) encryptBizContent(originData string) (string, error) {
 		return "", err
 	}
 	return base64.StdEncoding.EncodeToString(encryptData), nil
+}
+
+// SetHttpClient 设置自定义的xhttp.Client
+func (a *Client) SetHttpClient(client *xhttp.Client) {
+	a.hc = client
 }

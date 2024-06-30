@@ -1,11 +1,56 @@
+版本号：Release 1.5.103
+修改记录：
+   (1) 支付宝：新增 client.PayAppMarketingConsult()，商户前置内容咨询接口。
+   (2) 支付宝：新增 client.MarketingActivityOrderVoucherCreate()，创建商家券活动接口
+   (3) 支付宝：新增 client.MarketingActivityOrderVoucherCodeDeposit()，同步商家券券码接口
+   (4) 支付宝：新增 client.MarketingActivityOrderVoucherModify()，修改商家券活动基本信息接口
+   (4) 支付宝：新增 client.MarketingActivityOrderVoucherStop()，停止商家券活动接口
+   (4) 支付宝：新增 client.MarketingActivityOrderVoucherAppend()，修改商家券活动发券数量上限接口
+   (4) 支付宝：新增
+   (4) 支付宝：新增
+   (4) 支付宝：新增
+   (4) 支付宝：新增
+   (4) 支付宝：新增
+
+版本号：Release 1.5.102
+修改记录：
+   (1) gopay：golang.org/x/crypto v0.23.0 版本升级到 v0.24.0。
+   (2) 微信V3：client.V3Refund() 返回值修复错误结构。
+   (3) 支付宝：新增 client.AntMerchantShopPageQuery()，店铺分页查询接口。
+   (4) 支付宝：新增 client.AntMerchantExpandMccQuery()，商户mcc信息查询接口。
+   (5) 支付宝：新增 client.AntMerchantExpandShopReceiptAccountSave()，店铺增加收单账号接口。
+   (6) 支付宝：新增 client.DataBillEreceiptApply()，申请电子回单(incubating)接口。
+   (7) 支付宝：新增 client.DataBillEreceiptQuery()，查询电子回单状态(incubating)接口。
+   (8) 支付宝：新增 client.FaceVerificationInitialize()，APP人脸核身初始化接口。
+   (9) 支付宝：新增 client.FaceVerificationQuery()，APP人脸核身结果查询接口。
+   (10) 支付宝：新增 client.FaceCertifyInitialize()，H5人脸核身初始化接口。
+   (11) 支付宝：新增 client.FaceCertifyVerify()，H5人脸核身开始认证接口。
+   (12) 支付宝：新增 client.FaceCertifyQuery()，H5人脸核身查询记录接口。
+   (13) 支付宝：新增 client.FaceSourceCertify()，纯服务端人脸核身接口。
+   (14) 支付宝：新增 client.FaceCheckInitialize()，人脸检测初始化接口。
+   (15) 支付宝：新增 client.FaceCheckQuery()，人脸检测结果数据查询接口。
+   (16) 支付宝：新增 client.OcrServerDetect()，服务端OCR接口。
+   (17) 支付宝：新增 client.OcrMobileInitialize()，App端OCR初始化接口。
+   (18) 支付宝：新增 client.OcrCommonDetect()，文字识别OCR接口。
+
 版本号：Release 1.5.101
 修改记录：
-   (1) 微信V3：新增 client.V3AbnormalRefund()，发起异常退款。
-   (2) 微信V3：新增 client.V3FavorCallbackUrl()，查询消息通知地址。
-   (3) 微信V3：新增 client.V3ComplaintImage()，商户反馈图片请求接口。
-   (4) 微信V3：修改 wechat.V3DecryptNotifyCipherText() -> wechat.V3DecryptPayNotifyCipherText()，解密 普通支付 回调中的加密信息
-   (5) 微信V3：修改 wechat.DecryptPartnerCipherText() -> wechat.DecryptPartnerPayCipherText()，解密 普通支付 回调中的加密信息
-   (6) 微信V3：新增 wechat.V3DecryptNotifyCipherTextToStruct()，解密 统一数据 到指针结构体对象。
+   (1) gopay：golang.org/x/crypto v0.20.0 版本升级到 v0.23.0。
+   (2) gopay：xhttp移除外部依赖，修复文件上传相关接口的Bug。
+   (3) 微信V3：新增 client.V3AbnormalRefund()，发起异常退款。
+   (4) 微信V3：新增 client.V3FavorCallbackUrl()，查询消息通知地址。
+   (5) 微信V3：新增 client.V3ComplaintImage()，商户反馈图片请求接口。
+   (6) 微信V3：修改 wechat.V3DecryptNotifyCipherText() -> wechat.V3DecryptPayNotifyCipherText()，解密 普通支付 回调中的加密信息
+   (7) 微信V3：修改 wechat.DecryptPartnerCipherText() -> wechat.DecryptPartnerPayCipherText()，解密 普通支付 回调中的加密信息
+   (8) 微信V3：新增 wechat.V3DecryptNotifyCipherTextToStruct()，解密 统一数据 到指针结构体对象。
+   (9) 支付宝：新增 client.ZolozAuthenticationSmilepayInit()，刷脸支付初始化接口。
+   (10) 支付宝：新增 client.ZolozAuthenticationCustomerFtokenQuery()，查询刷脸结果信息接口。
+   (11) 支付宝：新增 client.MarketingActivityDeliveryChanged()，推广计划状态变更消息接口。
+   (12) 支付宝：新增 client.MarketingActivityDeliveryCreate()，创建推广计划接口。
+   (13) 支付宝：新增 client.MarketingActivityDeliveryQuery()，查询推广计划接口。
+   (14) 支付宝：新增 client.MarketingActivityDeliveryStop()，停止推广计划接口。
+   (15) 支付宝：新增 client.MarketingMaterialImageUpload()，营销图片资源上传接口。
+   (16) 支付宝：新增 client.AntMerchantExpandIndirectImageUpload()，图片上传接口。
 
 版本号：Release 1.5.100
 修改记录：

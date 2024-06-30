@@ -15,8 +15,8 @@ import (
 	"github.com/go-pay/crypto/xpem"
 	"github.com/go-pay/crypto/xrsa"
 	"github.com/go-pay/gopay"
+	"github.com/go-pay/gopay/pkg/xhttp"
 	"github.com/go-pay/util"
-	"github.com/go-pay/xhttp"
 )
 
 type Client struct {
@@ -135,4 +135,9 @@ func (c *Client) doPost(ctx context.Context, path string, bm gopay.BodyMap) (bs 
 		return nil, fmt.Errorf("HTTP Request Error, StatusCode = %d", res.StatusCode)
 	}
 	return bs, nil
+}
+
+// SetHttpClient 设置自定义的xhttp.Client
+func (c *Client) SetHttpClient(client *xhttp.Client) {
+	c.hc = client
 }

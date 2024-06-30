@@ -75,7 +75,7 @@ func (a *Client) TradeAppPay(ctx context.Context, bm gopay.BodyMap) (payParam st
 }
 
 // alipay.trade.wap.pay(手机网站支付接口2.0)
-// 文档地址：https://opendocs.alipay.com/open/02ivbs?scene=21&ref=api
+// 文档地址：https://opendocs.alipay.com/open/02ivbs
 func (a *Client) TradeWapPay(ctx context.Context, bm gopay.BodyMap) (payUrl string, err error) {
 	bm.Set("product_code", "QUICK_WAP_WAY")
 	err = bm.CheckEmptyError("out_trade_no", "total_amount", "subject")
@@ -118,6 +118,29 @@ func (a *Client) TradeCreate(ctx context.Context, bm gopay.BodyMap) (aliRsp *Tra
 		return nil, err
 	}
 	aliRsp = new(TradeCreateResponse)
+	if err = json.Unmarshal(bs, aliRsp); err != nil || aliRsp.Response == nil {
+		return nil, fmt.Errorf("[%w], bytes: %s", gopay.UnmarshalErr, string(bs))
+	}
+	if err = bizErrCheck(aliRsp.Response.ErrorResponse); err != nil {
+		return aliRsp, err
+	}
+	signData, signDataErr := a.getSignData(bs, aliRsp.AlipayCertSn)
+	aliRsp.SignData = signData
+	return aliRsp, a.autoVerifySignByCert(aliRsp.Sign, signData, signDataErr)
+}
+
+// alipay.trade.order.pay(统一收单交易订单支付接口)
+// 文档地址：https://opendocs.alipay.com/open/03vtew
+func (a *Client) TradeOrderPay(ctx context.Context, bm gopay.BodyMap) (aliRsp *TradeOrderPayResponse, err error) {
+	err = bm.CheckEmptyError("trade_no")
+	if err != nil {
+		return nil, err
+	}
+	var bs []byte
+	if bs, err = a.doAliPay(ctx, bm, "alipay.trade.order.pay"); err != nil {
+		return nil, err
+	}
+	aliRsp = new(TradeOrderPayResponse)
 	if err = json.Unmarshal(bs, aliRsp); err != nil || aliRsp.Response == nil {
 		return nil, fmt.Errorf("[%w], bytes: %s", gopay.UnmarshalErr, string(bs))
 	}

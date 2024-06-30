@@ -14,7 +14,7 @@ import (
 	"sync"
 
 	"github.com/go-pay/gopay"
-	"github.com/go-pay/xhttp"
+	"github.com/go-pay/gopay/pkg/xhttp"
 	"github.com/go-pay/xlog"
 )
 
@@ -56,6 +56,16 @@ func (w *Client) SetBodySize(sizeMB int) {
 	if sizeMB > 0 {
 		w.hc.SetBodySize(sizeMB)
 	}
+}
+
+// SetHttpClient 设置自定义的xhttp.Client
+func (w *Client) SetHttpClient(client *xhttp.Client) {
+	w.hc = client
+}
+
+// SetTLSHttpClient 设置自定义的xhttp.Client
+func (w *Client) SetTLSHttpClient(client *xhttp.Client) {
+	w.tlsHc = client
 }
 
 // 向微信发送Post请求，对于本库未提供的微信API，可自行实现，通过此方法发送请求
